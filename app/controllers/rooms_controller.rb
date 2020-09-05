@@ -10,6 +10,8 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    opentok = OpenTok::OpenTok.new Rails.application.credentials.vonage_api_key, Rails.application.credentials.vonage_api_secret
+    @token = opentok.generate_token @room.session_id
   end
 
   # GET /rooms/new
