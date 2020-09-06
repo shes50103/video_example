@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :play]
 
   # GET /rooms
   # GET /rooms.json
@@ -10,6 +10,11 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    opentok = OpenTok::OpenTok.new Rails.application.credentials.vonage_api_key, Rails.application.credentials.vonage_api_secret
+    @token = opentok.generate_token @room.session_id
+  end
+
+  def play
     opentok = OpenTok::OpenTok.new Rails.application.credentials.vonage_api_key, Rails.application.credentials.vonage_api_secret
     @token = opentok.generate_token @room.session_id
   end

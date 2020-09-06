@@ -17,6 +17,7 @@
         <td><%= room.name %></td>
         <td><%= room.session_id %></td>
         <td><%= link_to 'Show', room %></td>
+        <td><%= link_to 'Play', play_room_path(room) %></td>
         <td><%= link_to 'Edit', edit_room_path(room) %></td>
         <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -24,6 +25,9 @@
   </tbody>
 </table>
 
-<br>
+
+<video width="320" height="240" controls>
+  <source src="https://johnsonbubble.s3-ap-northeast-1.amazonaws.com/46906914/2dba2dfe-cc60-4bee-b825-67e8ff65901c/archive.mp4" type="video/mp4">
+</video>
 
 <%= link_to 'New Room', new_room_path %>
