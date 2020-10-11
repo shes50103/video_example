@@ -1,0 +1,132 @@
+{
+  "output_groups": [
+    {
+      "name": "Apple HLS",
+      "outputs": [
+        {
+          "container_settings": {
+            "container": "M3U8"
+          },
+          "video_description": {
+            "scaling_behavior": "DEFAULT",
+            "timecode_insertion": "DISABLED",
+            "anti_alias": "ENABLED",
+            "sharpness": 50,
+            "codec_settings": {
+              "codec": "H_264",
+              "h264_settings": {
+                "interlace_mode": "PROGRESSIVE",
+                "number_reference_frames": 3,
+                "syntax": "DEFAULT",
+                "softness": 0,
+                "gop_closed_cadence": 1,
+                "gop_size": 90,
+                "slices": 1,
+                "gop_b_reference": "DISABLED",
+                "slow_pal": "DISABLED",
+                "spatial_adaptive_quantization": "ENABLED",
+                "temporal_adaptive_quantization": "ENABLED",
+                "flicker_adaptive_quantization": "DISABLED",
+                "entropy_encoding": "CABAC",
+                "bitrate": 1000000,
+                "framerate_control": "INITIALIZE_FROM_SOURCE",
+                "rate_control_mode": "CBR",
+                "codec_profile": "MAIN",
+                "telecine": "NONE",
+                "min_i_interval": 0,
+                "adaptive_quantization": "HIGH",
+                "codec_level": "AUTO",
+                "field_encoding": "PAFF",
+                "scene_change_detect": "ENABLED",
+                "quality_tuning_level": "SINGLE_PASS",
+                "framerate_conversion_algorithm": "DUPLICATE_DROP",
+                "unregistered_sei_timecode": "DISABLED",
+                "gop_size_units": "FRAMES",
+                "par_control": "INITIALIZE_FROM_SOURCE",
+                "number_b_frames_between_reference_frames": 2,
+                "repeat_pps": "DISABLED",
+                "dynamic_sub_gop": "STATIC"
+              }
+            },
+            "afd_signaling": "NONE",
+            "drop_frame_timecode": "ENABLED",
+            "respond_to_afd": "NONE",
+            "color_metadata": "INSERT"
+          },
+          "audio_descriptions": [
+            {
+              "audio_type_control": "FOLLOW_INPUT",
+              "codec_settings": {
+                "codec": "AAC",
+                "aac_settings": {
+                  "audio_description_broadcaster_mix": "NORMAL",
+                  "bitrate": 96000,
+                  "rate_control_mode": "CBR",
+                  "codec_profile": "LC",
+                  "coding_mode": "CODING_MODE_2_0",
+                  "raw_format": "NONE",
+                  "sample_rate": 48000,
+                  "specification": "MPEG4"
+                }
+              },
+              "language_code_control": "FOLLOW_INPUT"
+            }
+          ],
+          "output_settings": {
+            "hls_settings": {
+              "audio_group_id": "program_audio",
+              "audio_only_container": "AUTOMATIC",
+              "i_frame_only_manifest": "EXCLUDE"
+            }
+          },
+          "name_modifier": "_stream"
+        }
+      ],
+      "output_group_settings": {
+        "type": "HLS_GROUP_SETTINGS",
+        "hls_group_settings": {
+          "manifest_duration_format": "INTEGER",
+          "segment_length": 10,
+          "caption_language_setting": "OMIT",
+          "destination": "s3://johnsonbubble/",
+          "codec_specification": "RFC_4281",
+          "output_selection": "MANIFESTS_AND_SEGMENTS",
+          "program_date_time_period": 600,
+          "min_segment_length": 0,
+          "min_final_segment_length": 0,
+          "directory_structure": "SINGLE_DIRECTORY",
+          "program_date_time": "EXCLUDE",
+          "segment_control": "SEGMENTED_FILES",
+          "manifest_compression": "NONE",
+          "client_cache": "ENABLED",
+          "audio_only_header": "INCLUDE",
+          "stream_inf_resolution": "INCLUDE"
+        }
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "audio_selectors": {
+        "Audio Selector 1": {
+          "offset": 0,
+          "default_selection": "DEFAULT",
+          "program_selection": 1
+        }
+      },
+      "video_selector": {
+        "color_space": "FOLLOW",
+        "rotate": "DEGREE_0",
+        "alpha_behavior": "DISCARD"
+      },
+      "filter_enable": "AUTO",
+      "psi_control": "USE_PSI",
+      "filter_strength": 0,
+      "deblock_filter": "DISABLED",
+      "denoise_filter": "DISABLED",
+      "input_scan_type": "AUTO",
+      "timecode_source": "ZEROBASED",
+      "file_input": "https://johnsonbubble.s3-ap-northeast-1.amazonaws.com/46906914/fdfb06a8-28a1-47f2-b397-8ba04312a248/archive.mp4"
+    }
+  ]
+}
